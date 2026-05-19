@@ -2,20 +2,20 @@ package com.example;
 
 public class GradingCalculator {
 
-    private final int score;
-    private final int attendancePercentage;
+    public int Score;
+    public int AttendancePercentage;
 
     public GradingCalculator(int score, int attendancePercentage) {
-        this.score = score;
-        this.attendancePercentage = attendancePercentage;
+        Score = score;
+        AttendancePercentage = attendancePercentage;
     }
 
     public char getGrade() {
-        if (score > 90 && attendancePercentage > 70) {
+        if (Score > 90 && AttendancePercentage > 70) {
             return 'A';
-        } else if (score > 80 && attendancePercentage > 60) {
+        } else if (Score > 80 && AttendancePercentage > 60) {
             return 'B';
-        } else if (score > 60 && attendancePercentage > 60) {
+        } else if (Score > 60 && AttendancePercentage > 60) {
             return 'C';
         } else {
             return 'F';

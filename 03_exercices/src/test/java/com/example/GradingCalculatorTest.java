@@ -1,27 +1,71 @@
 package com.example;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GradingCalculatorTest {
+public class GradingCalculatorTest {
 
-    @ParameterizedTest(name = "score={0}, attendance={1} => {2}")
-    @CsvSource({
-            "95, 90, A",
-            "85, 90, B",
-            "65, 90, C",
-            "95, 65, B",
-            "95, 55, F",
-            "65, 55, F",
-            "50, 90, F"
-    })
-    void shouldReturnExpectedGrade(int score, int attendancePercentage, char expectedGrade) {
-        GradingCalculator calculator = new GradingCalculator(score, attendancePercentage);
+    @Test
+    void shouldReturnGradeAWhenScore95AndAttendance90() {
+        GradingCalculator calculator = new GradingCalculator(95, 90);
 
         char grade = calculator.getGrade();
 
-        assertEquals(expectedGrade, grade);
+        assertEquals('A', grade);
+    }
+
+    @Test
+    void shouldReturnGradeBWhenScore85AndAttendance90() {
+        GradingCalculator calculator = new GradingCalculator(85, 90);
+
+        char grade = calculator.getGrade();
+
+        assertEquals('B', grade);
+    }
+
+    @Test
+    void shouldReturnGradeCWhenScore65AndAttendance90() {
+        GradingCalculator calculator = new GradingCalculator(65, 90);
+
+        char grade = calculator.getGrade();
+
+        assertEquals('C', grade);
+    }
+
+    @Test
+    void shouldReturnGradeBWhenScore95AndAttendance65() {
+        GradingCalculator calculator = new GradingCalculator(95, 65);
+
+        char grade = calculator.getGrade();
+
+        assertEquals('B', grade);
+    }
+
+    @Test
+    void shouldReturnGradeFWhenScore95AndAttendance55() {
+        GradingCalculator calculator = new GradingCalculator(95, 55);
+
+        char grade = calculator.getGrade();
+
+        assertEquals('F', grade);
+    }
+
+    @Test
+    void shouldReturnGradeFWhenScore65AndAttendance55() {
+        GradingCalculator calculator = new GradingCalculator(65, 55);
+
+        char grade = calculator.getGrade();
+
+        assertEquals('F', grade);
+    }
+
+    @Test
+    void shouldReturnGradeFWhenScore50AndAttendance90() {
+        GradingCalculator calculator = new GradingCalculator(50, 90);
+
+        char grade = calculator.getGrade();
+
+        assertEquals('F', grade);
     }
 }
